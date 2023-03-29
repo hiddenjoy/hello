@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>JavaScript Sample</title>
+    <script>
+      window.onload = function () {
+        let addButton = document.getElementById("add-status");
+        let statusNum = 1;
+
+        const introduction = document.getElementById("introduction");
+
+        introduction.innerHTML = "This is a new paragraph.";
+        introduction.style.color = "red";
+
+        //add button
+        addButton.addEventListener("click", function () {
+          const actionStatus = document.getElementById("action-status");
+          let newStatus = document.createElement("div");
+          newStatus.setAttribute("class", "status");
+          newStatus.innerHTML = String(statusNum) + ": Button clicked!";
+          statusNum++;
+
+          actionStatus.appendChild(newStatus);
+        });
+
+        //delete button
+        let delButton = document.getElementById("delete-status");
+        delButton.addEventListener("click", function () {
+          const status = document.getElementsByClassName("status");
+
+          status[status.length - 1].remove();
+          statusNum--;
+        });
+      };
+    </script>
+  </head>
+
+  <body>
+    <h1>JavaScript Sample</h1>
+    <p id="introduction">This is a sample paragraph.</p>
+    <button id="add-status">Add Status</button>
+    <button id="delete-status">Delete Status</button>
+    <p id="action-status">Action Status:</p>
+  </body>
+</html>
