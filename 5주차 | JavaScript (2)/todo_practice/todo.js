@@ -11,6 +11,7 @@ const todoList = {
   add(title, dueDate) {
     const item = new TodoItem(title, dueDate); //새 객체 만들어주기
     this.items.push(item); // 정보 넣기. this.items는 배열이라서 push 가능
+    console.log(this.items);
     this.save(); // 로컬 스토리지에 항목 리스트 저장
     return item;
   },
@@ -47,7 +48,11 @@ const todoList = {
   load() {
     const items = localStorage.getItem("todoList");
     if (items) {
-      this.items = JSON.parse(items);
+      let temp = JSON.parse(items);
+
+      temp.forEach((t) => {
+        this.items.push(new TodoItem(t.title, t.dueDate, t.completed));
+      });
     }
   },
 };
