@@ -47,6 +47,7 @@ const todoList = {
   // To-Do 항목 리스트를 로컬 스토리지에서 불러오는 메소드
   load() {
     const items = localStorage.getItem("todoList");
+
     if (items) {
       let temp = JSON.parse(items);
 
